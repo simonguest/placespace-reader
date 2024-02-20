@@ -10,7 +10,7 @@ example_projects = [
     "neemo-gamelab.png",
     "astronaut-gamelab.png",
     "maze01.png",
-    "maze02.png",
+    "blocks.png"
 ]
 
 chat_handler = Llava15ChatHandler(clip_model_path="./models/mmproj-model-f16.gguf")
@@ -19,8 +19,7 @@ llm = Llama(
     chat_handler=chat_handler,
     n_ctx=2048,
     logits_all=True,
-    n_gpu_layers=-1,
-    temperature=0.1,
+    n_gpu_layers=-1
 )
 
 
@@ -53,7 +52,9 @@ def generate(image_array, prompt):
                     {"type": "text", "text": prompt},
                 ],
             },
-        ]
+        ],
+        temperature=0.0,
+        max_tokens=100,
     )
     print(output)
     return output["choices"][0]["message"]["content"]
