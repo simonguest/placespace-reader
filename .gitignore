@@ -2,4 +2,5 @@ __pycache__
 gradio_cached_examples
 models/*.gguf
 temp.png
+test.py
 .DS_Store
